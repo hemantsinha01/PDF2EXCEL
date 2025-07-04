@@ -1,0 +1,16 @@
+api:
+  extraction_mode: "stream"
+  auto_detect: true
+
+scripts:
+  clean_csv: "scripts/01_cleancsv.py"
+  merge_narration: "scripts/mergenarr.py"
+  split_csv: "scripts/split.py"
+  delete_empt_row: "scripts/04_delete_empt_row.py"
+
+paths:
+  intermediate_csv: "exports/extracted.csv"
+  cleaned_csv: "exports/cleaned.csv"
+  merged_csv: "exports/merged.csv"
+  final_csv: "exports/final_output.csv"
+  processed_csv: "exports/processed_output.csv"

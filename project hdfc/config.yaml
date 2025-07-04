@@ -1,0 +1,16 @@
+api:
+  extraction_mode: "stream"
+  auto_detect: true
+
+scripts:
+  clean_csv: "scripts/01_cleancsv.py"
+  merge_narration: "scripts/02_mergenarration.py"
+  shift_hdfc: "scripts/03_shifthdfc.py"
+  closing_balance: "scripts/04_closingbal.py"
+
+paths:
+  intermediate_csv: "exports/extracted.csv"
+  cleaned_csv: "exports/cleaned.csv"
+  merged_csv: "exports/merged.csv"
+  shifted_csv: "exports/shifted.csv"
+  final_csv: "exports/final_output.csv"

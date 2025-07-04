@@ -1,0 +1,15 @@
+api:
+  extraction_mode: "lattice"
+  auto_detect: true
+
+scripts:
+  clean_csv: "scripts/01_clean.py"
+  consolidate: "scripts/02_consolidate.py"
+  branchcode: "scripts/03_branchcode.py"
+
+paths:
+  paths:
+  intermediate_csv: "exports/extracted.csv"
+  cleaned_csv: "exports/cleaned.csv"
+  consolidated_csv: "exports/consolidated.csv"
+  final_csv: "exports/final_output.csv"

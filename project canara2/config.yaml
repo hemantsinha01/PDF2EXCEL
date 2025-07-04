@@ -1,0 +1,50 @@
+# CSV Processing Pipeline Configuration
+
+api:
+  # API settings
+  max_file_size_mb: 16
+  allowed_extensions: [".csv"]
+  debug: true
+  host: "0.0.0.0"
+  port: 5000
+
+scripts:
+  # Python scripts in the pipeline
+  empty_column_ident: "scripts/01_empty_column_ident.py"
+  consolidate: "scripts/02_consolidate.py"
+
+paths:
+  # File paths for pipeline stages
+  empty_column_output: "exports/empty_cols_removed.csv"
+  consolidated_output: "exports/consolidated_output.csv"
+  
+  # Directories
+  exports_dir: "exports"
+  temp_dir: "temp"
+  scripts_dir: "scripts"
+
+processing:
+  # Processing options
+  remove_empty_threshold: 0.8  # Remove columns that are 80% empty
+  date_consolidation: true
+  clean_particulars: true
+  
+logging:
+  # Logging configuration
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/pipeline.log"
+
+# Pipeline stage descriptions
+pipeline_stages:
+  - name: "Empty Column Identification"
+    script: "01_empty_column_ident.py"
+    description: "Identifies and removes empty or mostly empty columns"
+    input: "uploaded CSV file"
+    output: "empty_cols_removed.csv"
+    
+  - name: "Row Consolidation"
+    script: "02_consolidate.py"
+    description: "Consolidates fragmented rows based on transaction dates"
+    input: "empty_cols_removed.csv"
+    output: "consolidated_output.csv"

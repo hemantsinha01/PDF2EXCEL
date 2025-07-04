@@ -1,0 +1,5 @@
+curl -X POST http://localhost:5000/extract \
+  -F "file=@kotak.pdf" \
+  -F "template=@kotak.json" \
+  -F "bank=kotak" \
+  --output final_output.csv
